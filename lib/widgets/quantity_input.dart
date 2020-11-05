@@ -71,7 +71,7 @@ class _QuantityInputState extends State<QuantityInput> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.symmetric(
-          vertical: BorderSide(color: BoxBorderColors.vertical, width: 1),
+          vertical: BorderSide(color: BoxBorderColors.primary, width: 1),
         ),
       ),
       child: Text("$_number"),

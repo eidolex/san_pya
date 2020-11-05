@@ -19,5 +19,4 @@ class InputBorderColors {
 
 class BoxBorderColors {
   static Color primary = Color(0xFFEBEBEB);
-  static Color vertical = Color(0xFFEBEBEB);
 }
