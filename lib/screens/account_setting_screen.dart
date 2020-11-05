@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/account_setting_input.dart';
+import 'package:san_pya/widgets/app_bar.dart';
 
 class AccountSettingScreen extends StatelessWidget {
   @override
@@ -8,14 +9,7 @@ class AccountSettingScreen extends StatelessWidget {
     var containerHeight = fullscreenHeight(context);
     var accentColor = Theme.of(context).accentColor;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Account",
-          style: TextStyle(fontWeight: FontWeight.w600),
-        ),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      appBar: appBar("Account"),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
