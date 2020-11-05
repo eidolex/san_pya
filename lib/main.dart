@@ -26,6 +26,10 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.red,
         fontFamily: 'Poppins',
 
+        textTheme: TextTheme(
+            bodyText1: TextStyle(color: Color(0xFF4E4E4E)),
+            bodyText2: TextStyle(color: Color(0xFF4E4E4E))),
+
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
