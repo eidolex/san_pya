@@ -9,10 +9,15 @@ class AccountSettingScreen extends StatelessWidget {
     var bottom = query.viewInsets.bottom;
     var paddingVertical = query.viewPadding.vertical;
     var containerHeight = height - bottom - paddingVertical - 57;
+    var accentColor = Theme.of(context).accentColor;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Account"),
+        title: Text(
+          "Account",
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
         centerTitle: true,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: ConstrainedBox(
@@ -29,15 +34,14 @@ class AccountSettingScreen extends StatelessWidget {
                     child: Text(
                       "Change Password",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                     ),
                   ),
                   Container(
                       margin: EdgeInsets.only(bottom: 16),
                       child: Text(
                         "You can reset your previous password here",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w300),
+                        style: TextStyle(fontSize: 10),
                       )),
                   AccountSettingInput(
                     label: "Old Password",
@@ -52,7 +56,7 @@ class AccountSettingScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: FlatButton(
-                    color: Colors.yellow,
+                    color: accentColor,
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6)),

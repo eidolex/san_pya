@@ -13,7 +13,10 @@ class AccountSettingInput extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            child: Text(this.label),
+            child: Text(
+              this.label,
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
             margin: EdgeInsets.only(bottom: 6),
           ),
           TextFormField(
@@ -23,12 +26,11 @@ class AccountSettingInput extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
-                    borderSide:
-                        BorderSide(width: 0.5, color: Colors.grey[400])),
+                    borderSide: BorderSide(width: 1, color: Color(0xFFE5E5E5))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
                     borderSide:
-                        BorderSide(width: 0.5, color: Colors.grey[400]))),
+                        BorderSide(width: 1, color: Color(0xFFE5E5E5)))),
           ),
         ],
       ),
