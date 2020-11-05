@@ -16,7 +16,7 @@ class Label extends StatelessWidget {
     return Container(
       child: Text(
         this.label,
-        style: TextStyle(fontWeight: FontWeight.w500),
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
       ),
       margin: EdgeInsets.only(bottom: bottom),
     );
