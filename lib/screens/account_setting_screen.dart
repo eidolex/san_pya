@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/account_setting_input.dart';
 
 class AccountSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var query = MediaQuery.of(context);
-    var height = query.size.height;
-    var bottom = query.viewInsets.bottom;
-    var paddingVertical = query.viewPadding.vertical;
-    var containerHeight = height - bottom - paddingVertical - 57;
+    var containerHeight = fullscreenHeight(context);
     var accentColor = Theme.of(context).accentColor;
     return Scaffold(
       appBar: AppBar(
