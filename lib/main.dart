@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:san_pya/screens/account_setting_screen.dart';
+import 'package:san_pya/screens/product_detail.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AccountSettingScreen(),
+      home: ProductDetail(),
     );
   }
 }
