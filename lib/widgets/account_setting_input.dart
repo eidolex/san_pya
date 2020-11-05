@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'label.dart';
+
 class AccountSettingInput extends StatelessWidget {
   final String label;
 
-  AccountSettingInput({Key key, this.label}) : super(key: key);
+  AccountSettingInput({Key key, @required this.label}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +14,7 @@ class AccountSettingInput extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            child: Text(
-              this.label,
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-            margin: EdgeInsets.only(bottom: 6),
-          ),
+          Label(label: label),
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(
