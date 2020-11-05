@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/colors.dart';
 
 class QuantityInput extends StatefulWidget {
   final double width;
@@ -27,7 +28,7 @@ class _QuantityInputState extends State<QuantityInput> {
       width: widget.width,
       height: height,
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Color(0xFFEBEBEB)),
+        border: Border.all(width: 1, color: BoxBorderColors.primary),
       ),
       child: Row(
         children: [
@@ -57,7 +58,7 @@ class _QuantityInputState extends State<QuantityInput> {
         onPressed: onPressed,
         child: Icon(
           icon,
-          color: Color(0xFF1D1D1D),
+          color: InputBorderColors.btn,
         ),
       ),
     );
@@ -70,7 +71,7 @@ class _QuantityInputState extends State<QuantityInput> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         border: Border.symmetric(
-          vertical: BorderSide(color: Color(0xFFEBEBEB), width: 1),
+          vertical: BorderSide(color: BoxBorderColors.vertical, width: 1),
         ),
       ),
       child: Text("$_number"),

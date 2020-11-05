@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/colors.dart';
 
 class CustomCheckbox extends StatefulWidget {
   final String label;
@@ -53,7 +54,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                 borderRadius: BorderRadius.circular(3),
                 border: Border.all(
                     width: 1.3,
-                    color: _isSelected ? color : Color(0xFFE5E5E5))),
+                    color: _isSelected ? color : TextColors.bodyText)),
             width: size,
             height: size,
             child: _isSelected

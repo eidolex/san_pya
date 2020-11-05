@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/screens/product_detail.dart';
+import 'package:san_pya/constants/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xFFE63A3F),
-        accentColor: Color(0xFFF0BC30),
+        primaryColor: MainColors.primary,
+        accentColor: MainColors.accent,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -27,8 +28,8 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
 
         textTheme: TextTheme(
-            bodyText1: TextStyle(color: Color(0xFF4E4E4E)),
-            bodyText2: TextStyle(color: Color(0xFF4E4E4E))),
+            bodyText1: TextStyle(color: TextColors.bodyText),
+            bodyText2: TextStyle(color: TextColors.bodyText)),
 
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and

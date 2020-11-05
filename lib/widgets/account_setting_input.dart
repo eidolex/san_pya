@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/colors.dart';
 
 import 'label.dart';
 
@@ -22,11 +23,12 @@ class AccountSettingInput extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
-                    borderSide: BorderSide(width: 1, color: Color(0xFFE5E5E5))),
+                    borderSide:
+                        BorderSide(width: 1, color: TextColors.bodyText)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
                     borderSide:
-                        BorderSide(width: 1, color: Color(0xFFE5E5E5)))),
+                        BorderSide(width: 1, color: TextColors.bodyText))),
           ),
         ],
       ),
