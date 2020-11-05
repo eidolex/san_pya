@@ -50,8 +50,10 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
             margin: EdgeInsets.only(left: hasLabel ? widget.spacing : 0),
             decoration: BoxDecoration(
                 color: _isSelected ? color : widget.inactiveColor,
+                borderRadius: BorderRadius.circular(3),
                 border: Border.all(
-                    width: 1, color: _isSelected ? color : Color(0xFFE5E5E5))),
+                    width: 1.3,
+                    color: _isSelected ? color : Color(0xFFE5E5E5))),
             width: size,
             height: size,
             child: _isSelected
