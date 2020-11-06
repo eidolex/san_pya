@@ -3,6 +3,7 @@ class SanPyaRoutes {
 
   static const main = '/';
   static const profile = '/profile';
+  static const login = '/login';
   static const accountSetting = '/account_setting';
   static const passwordSetting = '/password_setting';
   static const productDetail = '/product_detail';

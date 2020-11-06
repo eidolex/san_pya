@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/utils/device_utils.dart';
 
-double fullscreenHeight(BuildContext context) {
+double fullScreenHeight(BuildContext context) {
   var query = MediaQuery.of(context);
   var height = query.size.height;
-  var bottom = query.viewInsets.bottom;
-  var paddingVertical = query.viewPadding.vertical;
-  return height - bottom - paddingVertical - 57;
+  var padding = query.padding;
+
+  if (isIOS()) {
+    // height without SafeArea
+    return height - padding.top - padding.bottom;
+  }
+
+  return height - padding.top - kToolbarHeight;
 }

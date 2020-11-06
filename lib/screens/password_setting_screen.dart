@@ -7,7 +7,7 @@ import 'package:san_pya/widgets/block_button.dart';
 class PasswordSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var containerHeight = fullscreenHeight(context);
+    var containerHeight = fullScreenHeight(context);
     return Scaffold(
       appBar: appBar(context, "Account"),
       body: SingleChildScrollView(

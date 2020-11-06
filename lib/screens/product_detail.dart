@@ -11,7 +11,7 @@ import 'package:san_pya/widgets/quantity_input.dart';
 class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var containerHeight = fullscreenHeight(context);
+    var containerHeight = fullScreenHeight(context);
 
     var theme = Theme.of(context);
     var primaryColor = theme.primaryColor;
