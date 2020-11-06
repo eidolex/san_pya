@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/san_pya_routes.dart';
+import 'package:san_pya/screens/account_setting_screen.dart';
 import 'package:san_pya/screens/product_detail.dart';
 import 'package:san_pya/constants/colors.dart';
+import 'package:san_pya/screens/shopping_cart_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +39,12 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ProductDetail(),
+      initialRoute: SanPyaRoutes.productDetail,
+      routes: {
+        SanPyaRoutes.accountSetting: (context) => AccountSettingScreen(),
+        SanPyaRoutes.productDetail: (context) => ProductDetail(),
+        SanPyaRoutes.shoppingCart: (context) => ShoppingCartScreen()
+      },
     );
   }
 }
