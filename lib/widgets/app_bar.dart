@@ -25,7 +25,11 @@ Widget appBar(BuildContext context, String title) {
             onPressed: () {
               Navigator.pop(context);
             })
-        : null,
+        : IconButton(
+            icon: Icon(SanPyaIcons.user, size: 20),
+            onPressed: () {
+              Navigator.pushNamed(context, SanPyaRoutes.profile);
+            }),
     centerTitle: true,
     elevation: 0,
   );
