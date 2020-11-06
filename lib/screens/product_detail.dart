@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_icons.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/app_bar.dart';
@@ -56,7 +57,14 @@ class ProductDetail extends StatelessWidget {
                           ),
                           Label(label: "Size"),
                           Container(
+                            width: double.infinity,
                             margin: EdgeInsets.only(bottom: 16),
+                            padding: EdgeInsets.only(bottom: 16),
+                            decoration: BoxDecoration(
+                                border: BorderDirectional(
+                                    bottom: BorderSide(
+                                        width: 1,
+                                        color: BoxBorderColors.primary))),
                             child: Wrap(
                               spacing: 12.0,
                               runSpacing: 8.0,
