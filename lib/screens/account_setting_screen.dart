@@ -9,7 +9,7 @@ class AccountSettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var containerHeight = fullscreenHeight(context);
     return Scaffold(
-      appBar: appBar("Account"),
+      appBar: appBar(context, "Account"),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(

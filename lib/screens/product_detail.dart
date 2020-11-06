@@ -17,7 +17,7 @@ class ProductDetail extends StatelessWidget {
     var accentColor = theme.accentColor;
 
     return Scaffold(
-      appBar: appBar("Product Detail"),
+      appBar: appBar(context, "Product Detail"),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -94,8 +94,8 @@ class ProductDetail extends StatelessWidget {
                 child: BlockButton(
                   icon: SanPyaIcons.cart,
                   text: ('Add to Cart'),
-                    onPressed: () {},
-                  ),
+                  onPressed: () {},
+                ),
               )
             ],
           ),
