@@ -114,7 +114,7 @@ class ProductDetail extends StatelessWidget {
 
   AspectRatio buildConverPhoto(Color primaryColor) {
     return AspectRatio(
-      aspectRatio: 16 / 9,
+      aspectRatio: 21 / 9,
       child: Stack(
         alignment: Alignment.bottomLeft,
         children: [
