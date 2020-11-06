@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
-import 'package:san_pya/screens/account_setting_screen.dart';
+import 'package:san_pya/screens/password_setting_screen.dart';
 import 'package:san_pya/screens/product_detail.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/screens/shopping_cart_screen.dart';
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: SanPyaRoutes.productDetail,
       routes: {
-        SanPyaRoutes.accountSetting: (context) => AccountSettingScreen(),
+        SanPyaRoutes.passwordSetting: (context) => PasswordSettingScreen(),
         SanPyaRoutes.productDetail: (context) => ProductDetail(),
         SanPyaRoutes.shoppingCart: (context) => ShoppingCartScreen()
       },

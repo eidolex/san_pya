@@ -4,7 +4,7 @@ import 'package:san_pya/widgets/account_setting_input.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/block_button.dart';
 
-class AccountSettingScreen extends StatelessWidget {
+class PasswordSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var containerHeight = fullscreenHeight(context);
