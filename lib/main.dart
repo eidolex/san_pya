@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
 
         textTheme: TextTheme(
+            headline1: TextStyle(
+                color: TextColors.bodyText,
+                fontSize: 18,
+                fontWeight: FontWeight.w600),
             bodyText1: TextStyle(color: TextColors.bodyText),
             bodyText2: TextStyle(color: TextColors.bodyText)),
 
