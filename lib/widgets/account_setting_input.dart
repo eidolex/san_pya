@@ -23,12 +23,12 @@ class AccountSettingInput extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
-                    borderSide:
-                        BorderSide(width: 1, color: TextColors.bodyText)),
+                    borderSide: BorderSide(
+                        width: 1, color: InputBorderColors.textInput)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
-                    borderSide:
-                        BorderSide(width: 1, color: TextColors.bodyText))),
+                    borderSide: BorderSide(
+                        width: 1, color: InputBorderColors.textInput))),
           ),
         ],
       ),
