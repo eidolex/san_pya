@@ -54,7 +54,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                 borderRadius: BorderRadius.circular(3),
                 border: Border.all(
                     width: 1.3,
-                    color: _isSelected ? color : TextColors.bodyText)),
+                    color: _isSelected ? color : InputBorderColors.textInput)),
             width: size,
             height: size,
             child: _isSelected
