@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/colors.dart';
+import 'package:san_pya/constants/san_pya_routes.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
@@ -7,19 +8,21 @@ class ProductListScreen extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
               border: BorderDirectional(
                   bottom:
                       BorderSide(width: 1, color: BoxBorderColors.primary))),
         ),
         Expanded(
-          child: ListView(
-            children: [
-              _ProductListItem(title: 'Category A'),
-              _ProductListItem(title: 'Category B'),
-              _ProductListItem(title: 'Category C')
-            ],
+          child: ListView.separated(
+            padding: const EdgeInsets.only(bottom: 16),
+            itemCount: 3,
+            separatorBuilder: (BuildContext context, int index) =>
+                Divider(height: 1, color: BoxBorderColors.primary),
+            itemBuilder: (BuildContext context, int index) {
+              return _ProductListItem(title: 'Category A');
+            },
           ),
         ),
       ],
@@ -35,31 +38,25 @@ class _ProductListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var headline1Style = Theme.of(context).textTheme.headline1;
-    return Container(
-      // padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-          border: BorderDirectional(
-              bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: EdgeInsets.all(16),
-            child: Text(
-              this.title,
-              style: headline1Style,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.all(16),
+          child: Text(
+            this.title,
+            style: headline1Style,
           ),
-          Container(
-            height: 220,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(bottom: 16),
-              children: [_Product(), _Product()],
-            ),
-          )
-        ],
-      ),
+        ),
+        Container(
+          height: 220,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.only(bottom: 16),
+            children: [_Product(), _Product()],
+          ),
+        )
+      ],
     );
   }
 }
@@ -67,14 +64,18 @@ class _ProductListItem extends StatelessWidget {
 class _Product extends StatelessWidget {
   void _addToCartHandler() {}
 
+  void _itemTapHandler(BuildContext context) {
+    Navigator.pushNamed(context, SanPyaRoutes.productDetail);
+  }
+
   @override
   Widget build(BuildContext context) {
     var accentColor = Theme.of(context).accentColor;
     var primaryColor = Theme.of(context).primaryColor;
     var radiusCircluar = Radius.circular(8);
     return Container(
-      width: 240,
-      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+      width: 230,
+      margin: EdgeInsets.symmetric(horizontal: 16.0),
       child: Stack(
         overflow: Overflow.visible,
         children: [
@@ -82,16 +83,19 @@ class _Product extends StatelessWidget {
             margin: EdgeInsets.all(0),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                AspectRatio(aspectRatio: 2.8),
-                buildProductInfo(accentColor),
-                Container(
-                  alignment: Alignment.bottomRight,
-                  child: buildFlatButton(radiusCircluar, accentColor),
-                )
-              ],
+            child: InkWell(
+              onTap: () => _itemTapHandler(context),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildCoverPhoto(),
+                  buildProductInfo(accentColor),
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    child: buildFlatButton(radiusCircluar, accentColor),
+                  )
+                ],
+              ),
             ),
           ),
           buildPromoTag(primaryColor),
@@ -100,10 +104,30 @@ class _Product extends StatelessWidget {
     );
   }
 
+  Widget buildCoverPhoto() {
+    return AspectRatio(
+      aspectRatio: 21 / 9,
+      child: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+          child: Image(
+            width: double.infinity,
+            image: AssetImage('graphics/image1.png'),
+            fit: BoxFit.cover,
+          )),
+    );
+  }
+
   Widget buildPromoTag(Color primaryColor) {
+    const offset = 8.0;
+    const borderWidth = offset / 2;
+    var ribbonBorderTransparentSide =
+        BorderSide(width: borderWidth, color: Colors.transparent);
+    var ribbonBorderSide =
+        BorderSide(width: borderWidth, color: MainColors.primaryDarker);
     return Positioned(
         top: 12,
-        left: -8,
+        left: 0.0 - offset,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -120,14 +144,14 @@ class _Product extends StatelessWidget {
               ),
             ),
             Container(
-              width: 8,
-              height: 8,
+              width: offset,
+              height: offset,
               decoration: BoxDecoration(
                   border: Border(
-                left: BorderSide(width: 4, color: Colors.transparent),
-                top: BorderSide(width: 4, color: MainColors.primaryDarker),
-                bottom: BorderSide(width: 4, color: Colors.transparent),
-                right: BorderSide(width: 4, color: MainColors.primaryDarker),
+                left: ribbonBorderTransparentSide,
+                bottom: ribbonBorderTransparentSide,
+                top: ribbonBorderSide,
+                right: ribbonBorderSide,
               )),
             ),
           ],
@@ -137,7 +161,7 @@ class _Product extends StatelessWidget {
   Widget buildProductInfo(Color accentColor) {
     return Expanded(
         child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
