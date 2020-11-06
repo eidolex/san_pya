@@ -27,3 +27,9 @@ class BoxBorderColors {
 
   static Color primary = Color(0xFFEBEBEB);
 }
+
+class TabColors {
+  TabColors._();
+
+  static Color inactive = Color(0xFFE0E0E0);
+}
