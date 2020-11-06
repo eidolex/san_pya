@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/san_pya_icons.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/app_bar.dart';
+import 'package:san_pya/widgets/block_button.dart';
 import 'package:san_pya/widgets/custom_checkbox.dart';
 import 'package:san_pya/widgets/label.dart';
 import 'package:san_pya/widgets/quantity_input.dart';
@@ -89,18 +91,11 @@ class ProductDetail extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: FlatButton(
-                    color: accentColor,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6)),
-                    padding: EdgeInsets.only(top: 16, bottom: 16),
-                    child: Text("Add to cart"),
+                child: BlockButton(
+                  icon: SanPyaIcons.cart,
+                  text: ('Add to Cart'),
                     onPressed: () {},
                   ),
-                ),
               )
             ],
           ),

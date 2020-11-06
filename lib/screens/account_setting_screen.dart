@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/account_setting_input.dart';
 import 'package:san_pya/widgets/app_bar.dart';
+import 'package:san_pya/widgets/block_button.dart';
 
 class AccountSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var containerHeight = fullscreenHeight(context);
-    var accentColor = Theme.of(context).accentColor;
     return Scaffold(
       appBar: appBar("Account"),
       body: SingleChildScrollView(
@@ -44,18 +44,7 @@ class AccountSettingScreen extends StatelessWidget {
                     label: "Confirm Password",
                   ),
                 ]),
-                SizedBox(
-                  width: double.infinity,
-                  child: FlatButton(
-                    color: accentColor,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6)),
-                    padding: EdgeInsets.only(top: 16, bottom: 16),
-                    child: Text("Confirm"),
-                    onPressed: () {},
-                  ),
-                ),
+                BlockButton(text: "Confirm", onPressed: () {}),
               ],
             ),
           ),
