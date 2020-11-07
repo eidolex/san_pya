@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/colors.dart';
+import 'package:san_pya/constants/spacings.dart';
 
 import 'label.dart';
 
@@ -11,7 +12,7 @@ class AccountSettingInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: Edge.eb4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,8 +20,7 @@ class AccountSettingInput extends StatelessWidget {
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                contentPadding: Edge.e3,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.zero),
                     borderSide: BorderSide(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/spacings.dart';
 
 class BlockButton extends StatelessWidget {
   const BlockButton({
@@ -24,7 +25,7 @@ class BlockButton extends StatelessWidget {
       color: color,
       textColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-      padding: EdgeInsets.only(top: 16, bottom: 16),
+      padding: EdgeInsets.only(top: Spacing.s4, bottom: Spacing.s4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

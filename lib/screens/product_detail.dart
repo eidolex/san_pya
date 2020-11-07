@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_icons.dart';
+import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/block_button.dart';
@@ -31,7 +32,7 @@ class ProductDetail extends StatelessWidget {
                   buildConverPhoto(primaryColor),
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(16),
+                    padding: Edge.e4,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -51,15 +52,15 @@ class ProductDetail extends StatelessWidget {
                                 fontSize: 18, fontWeight: FontWeight.w600),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 16),
+                            margin: Edge.eb4,
                             child: Text("MMK 10000 / viss",
                                 style: TextStyle(fontWeight: FontWeight.w500)),
                           ),
                           Label(label: "Size"),
                           Container(
                             width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 16),
-                            padding: EdgeInsets.only(bottom: 16),
+                            margin: Edge.eb4,
+                            padding: Edge.eb4,
                             decoration: BoxDecoration(
                                 border: BorderDirectional(
                                     bottom: BorderSide(
@@ -98,7 +99,7 @@ class ProductDetail extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(16),
+                padding: Edge.e4,
                 child: BlockButton(
                   icon: SanPyaIcons.cart,
                   text: ('Add to Cart'),
@@ -127,7 +128,8 @@ class ProductDetail extends StatelessWidget {
             color: primaryColor,
             child: IntrinsicHeight(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding: EdgeInsets.symmetric(
+                    vertical: Spacing.s3, horizontal: Spacing.s4),
                 child: Text(
                   "Promotion Price",
                   style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/utils/fullscreen_height.dart';
 import 'package:san_pya/widgets/account_setting_input.dart';
 import 'package:san_pya/widgets/app_bar.dart';
@@ -15,13 +16,13 @@ class PasswordSettingScreen extends StatelessWidget {
           constraints: BoxConstraints(
               minWidth: double.infinity, minHeight: containerHeight),
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: Edge.e4,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 4),
+                    margin: Edge.eb2,
                     child: Text(
                       "Change Password",
                       style:
@@ -29,7 +30,7 @@ class PasswordSettingScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(bottom: 16),
+                      margin: Edge.eb4,
                       child: Text(
                         "You can reset your previous password here",
                         style: TextStyle(fontSize: 10),
