@@ -70,6 +70,8 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget _buildProfileCover() {
+    // TODO: add photo picker icon
+    // TODO: add name change icon
     return AspectRatio(
       aspectRatio: 4 / 3,
       child: Container(

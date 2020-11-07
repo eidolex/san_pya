@@ -14,6 +14,7 @@ class ProductListScreen extends StatelessWidget {
               border: BorderDirectional(
                   bottom:
                       BorderSide(width: 1, color: BoxBorderColors.primary))),
+          // TODO: design product list filter
         ),
         Expanded(
           child: ListView.separated(
