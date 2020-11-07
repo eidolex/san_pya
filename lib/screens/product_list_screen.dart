@@ -51,10 +51,13 @@ class _ProductListItem extends StatelessWidget {
         ),
         Container(
           height: 220,
-          child: ListView(
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: Edge.eb4,
-            children: [_Product(), _Product()],
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int position) {
+              return _Product();
+            },
           ),
         )
       ],
