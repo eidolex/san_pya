@@ -7,10 +7,12 @@ double fullScreenHeight(BuildContext context) {
   var padding = query.padding;
   var bottom = query.viewInsets.bottom;
 
+  double screenHeight = height - bottom - padding.top - kToolbarHeight;
+
   if (isIOS()) {
     // height without SafeArea
-    return height - bottom - padding.top - padding.bottom - kToolbarHeight;
+    return screenHeight - padding.bottom;
   }
 
-  return height - bottom - padding.top - kToolbarHeight;
+  return screenHeight;
 }
