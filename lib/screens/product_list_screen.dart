@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
+import 'package:san_pya/constants/spacings.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class ProductListScreen extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: Edge.e4,
           decoration: BoxDecoration(
               border: BorderDirectional(
                   bottom:
@@ -16,7 +17,7 @@ class ProductListScreen extends StatelessWidget {
         ),
         Expanded(
           child: ListView.separated(
-            padding: const EdgeInsets.only(bottom: 16),
+            padding: Edge.eb4,
             itemCount: 3,
             separatorBuilder: (BuildContext context, int index) =>
                 Divider(height: 1, color: BoxBorderColors.primary),
@@ -42,7 +43,7 @@ class _ProductListItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.all(16),
+          margin: Edge.e4,
           child: Text(
             this.title,
             style: headline1Style,
@@ -52,7 +53,7 @@ class _ProductListItem extends StatelessWidget {
           height: 220,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(bottom: 16),
+            padding: Edge.eb4,
             children: [_Product(), _Product()],
           ),
         )
@@ -75,12 +76,12 @@ class _Product extends StatelessWidget {
     var radiusCircluar = Radius.circular(8);
     return Container(
       width: 230,
-      margin: EdgeInsets.symmetric(horizontal: 16.0),
+      margin: Edge.ex4,
       child: Stack(
         overflow: Overflow.visible,
         children: [
           Card(
-            margin: EdgeInsets.all(0),
+            margin: EdgeInsets.zero,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: InkWell(
@@ -133,7 +134,7 @@ class _Product extends StatelessWidget {
           children: [
             Container(
               color: primaryColor,
-              padding: EdgeInsets.all(8),
+              padding: Edge.e3,
               child: Text(
                 "Promotion Price",
                 style: TextStyle(
@@ -161,7 +162,7 @@ class _Product extends StatelessWidget {
   Widget buildProductInfo(Color accentColor) {
     return Expanded(
         child: Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: Edge.e3,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -172,7 +173,7 @@ class _Product extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 4),
+                margin: Edge.eb2,
                 child: Text(
                   "Product Name",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -185,7 +186,7 @@ class _Product extends StatelessWidget {
             ],
           )),
           Container(
-            margin: EdgeInsets.only(top: 4),
+            margin: Edge.et2,
             child: Text(
               "Instock",
               style: TextStyle(
