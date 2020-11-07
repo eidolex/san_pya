@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/constants/san_pya_icons.dart';
 
-Widget appBar(BuildContext context, String title) {
-  var currentRoute = ModalRoute.of(context).settings.name;
-  var showCart = currentRoute != SanPyaRoutes.shoppingCart;
-  return AppBar(
-    title: Text(
-      title,
-      style: TextStyle(fontWeight: FontWeight.w600),
-    ),
-    actions: [if (showCart) _buildCartButton(context)],
-    leading: _buildLeadingButton(context),
-    centerTitle: true,
-    elevation: 0,
-  );
+AppBar appBar(BuildContext context, String title) {
+  return _buildAppBar(
+      context,
+      Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ));
 }
 
-Widget appBarCustomTitle(BuildContext context, Widget title) {
+AppBar appBarCustomTitle(BuildContext context, Widget title) {
+  return _buildAppBar(context, title);
+}
+
+AppBar _buildAppBar(BuildContext context, Widget title) {
   var currentRoute = ModalRoute.of(context).settings.name;
   var showCart = currentRoute != SanPyaRoutes.shoppingCart;
   return AppBar(
