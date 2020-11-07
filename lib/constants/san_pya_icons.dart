@@ -21,20 +21,24 @@ class SanPyaIcons {
   static const _kFontFam = 'SanPya';
   static const _kFontPkg = null;
 
-  static const IconData cart =
+  static const IconData camera =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData home =
+  static const IconData cart =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData left_arrow =
+  static const IconData home =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData list =
+  static const IconData left_arrow =
       IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData newspaper =
+  static const IconData list =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData padlock =
+  static const IconData newspaper =
       IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData search =
+  static const IconData next =
       IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData user =
+  static const IconData padlock =
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData search =
+      IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user =
+      IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
