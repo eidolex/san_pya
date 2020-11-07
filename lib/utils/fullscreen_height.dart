@@ -9,7 +9,7 @@ double fullScreenHeight(BuildContext context) {
 
   if (isIOS()) {
     // height without SafeArea
-    return height - bottom - padding.top - padding.bottom;
+    return height - bottom - padding.top - padding.bottom - kToolbarHeight;
   }
 
   return height - bottom - padding.top - kToolbarHeight;
