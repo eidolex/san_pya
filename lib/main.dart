@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/san_pya_fonts.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
+import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
 import 'package:san_pya/screens/password_setting_screen.dart';
 import 'package:san_pya/screens/product_detail.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SanPyaRoutes.main,
       routes: {
         SanPyaRoutes.main: (context) => MainScreen(),
+        SanPyaRoutes.login: (context) => LoginScreen(),
         SanPyaRoutes.profile: (context) => ProfileScreen(),
         SanPyaRoutes.passwordSetting: (context) => PasswordSettingScreen(),
         SanPyaRoutes.productDetail: (context) => ProductDetail(),
