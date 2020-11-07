@@ -3,5 +3,5 @@ class SanPyaFonts {
 
   static const poppins = 'Poppins';
 
-  static const w02art = 'W02Art Hose';
+  static const w02art = 'W02Art House';
 }
