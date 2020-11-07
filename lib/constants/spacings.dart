@@ -7,7 +7,7 @@ class Spacing {
   static const s2 = 4.0;
   static const s3 = 8.0;
   static const s4 = 16.0;
-  static const s5 = 22.0;
+  static const s5 = 32.0;
 }
 
 class Edge {
