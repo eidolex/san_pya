@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:san_pya/constants/san_pya_fonts.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/screens/main_screen.dart';
 import 'package:san_pya/screens/password_setting_screen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         // primarySwatch: Colors.red,
-        fontFamily: 'Poppins',
+        fontFamily: SanPyaFonts.poppins,
 
         textTheme: TextTheme(
             headline1: TextStyle(

@@ -83,6 +83,9 @@ flutter:
         - asset: fonts/Poppins-SemiBoldItalic.ttf
         - asset: fonts/Poppins-Thin.ttf
         - asset: fonts/Poppins-ThinItalic.ttf
+    - family: "W02Art House"
+      fonts:
+        - asset: "fonts/W02Art House.TTF"
           # style: italic
   #   - family: Trajan Pro
   #     fonts:
