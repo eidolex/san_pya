@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/san_pya_icons.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
@@ -18,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: appBar(context, "Profile"),
       body: ListView(
         children: [
+          _buildProfileCover(),
           _buildListTile("Phone Number", text: "09254052523", showIcon: false),
           _buildListTile(
             "Change Password",
@@ -62,6 +65,55 @@ class ProfileScreen extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _buildProfileCover() {
+    return AspectRatio(
+      aspectRatio: 4 / 3,
+      child: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("graphics/profile.png"), fit: BoxFit.cover)),
+        child: ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: new Container(
+              decoration: new BoxDecoration(color: Colors.transparent),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: FractionallySizedBox(
+                        heightFactor: 0.5,
+                        child: AspectRatio(
+                            aspectRatio: 1,
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("graphics/profile.png"),
+                            )),
+                      ),
+                    ),
+                    Container(
+                      margin: Edge.et4,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: 200),
+                        child: Text(
+                          "James Batron",
+                          overflow: TextOverflow.clip,
+                          maxLines: 2,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    )
+                  ]),
+            ),
+          ),
+        ),
       ),
     );
   }
