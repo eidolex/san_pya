@@ -10,7 +10,7 @@ import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
 import 'package:san_pya/screens/notification_setting_screen.dart';
 import 'package:san_pya/screens/password_setting_screen.dart';
-import 'package:san_pya/screens/product_detail.dart';
+import 'package:san_pya/screens/product_detail_screen.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/screens/profile_screen.dart';
 import 'package:san_pya/screens/shopping_cart_screen.dart';
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             SanPyaRoutes.notificationSetting: (context) =>
                 NotificationSettingScreen(),
             SanPyaRoutes.productDetail: (context) => BlocProvider(
-                create: (_) => productBloc, child: ProductDetail()),
+                create: (_) => productBloc, child: ProductDetailScreen()),
             SanPyaRoutes.shoppingCart: (context) => ShoppingCartScreen()
           },
         ));

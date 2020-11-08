@@ -9,7 +9,7 @@ import 'package:san_pya/widgets/custom_checkbox.dart';
 import 'package:san_pya/widgets/label.dart';
 import 'package:san_pya/widgets/quantity_input.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var containerHeight = fullScreenHeight(context);
