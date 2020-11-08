@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:san_pya/api/product_api.dart';
 import 'package:san_pya/models/product.dart';
+import 'package:san_pya/repository/product_repository.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final ProductApi _productApi;
+  final ProducRepository _productRepository;
 
-  ProductBloc(this._productApi) : super(ProductInitial());
+  ProductBloc(this._productRepository) : super(ProductInitial());
 
   @override
   Stream<ProductState> mapEventToState(
@@ -27,7 +27,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   Stream<ProductState> _mapFetchProductListToState() async* {
     yield ProductListLoading();
     try {
-      final products = await _productApi.fetchProducts();
+      final products = await _productRepository.fetchProducts();
       yield ProductListLoaded(products);
     } catch (_) {}
   }
@@ -35,7 +35,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   Stream<ProductState> _mapFetchProductDetailEvent(
       FetchProductDetailEvent event, ProductState state) async* {
     try {
-      final product = await _productApi.fetchProductDetailById(event.id);
+      final product = await _productRepository.fetchProductDetailById(event.id);
       yield ProductDetailLoaded(product);
     } catch (_) {}
   }

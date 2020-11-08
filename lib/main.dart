@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:san_pya/api/product_api.dart';
 import 'package:san_pya/bloc/cart_bloc.dart';
 import 'package:san_pya/bloc/product_bloc.dart';
 import 'package:san_pya/constants/san_pya_fonts.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
+import 'package:san_pya/repository/product_repository.dart';
 import 'package:san_pya/screens/language_setting_screen.dart';
 import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
@@ -16,15 +16,20 @@ import 'package:san_pya/screens/profile_screen.dart';
 import 'package:san_pya/screens/shopping_cart_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp(
+    productResponsitory: FakeProducRepository(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  final ProducRepository productResponsitory;
+
+  const MyApp({Key key, @required this.productResponsitory}) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    var productBloc = ProductBloc(FakeProductApi());
+    var productBloc = ProductBloc(productResponsitory);
     return MultiBlocProvider(
         providers: [
           BlocProvider<CartBloc>(create: (_) => CartBloc()..add(CartStarted()))
