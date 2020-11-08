@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/widgets/app_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationSettingScreen extends StatelessWidget {
   @override
@@ -21,11 +22,31 @@ class _NotificationSetting extends StatefulWidget {
 }
 
 class _NotificationSettingState extends State<_NotificationSetting> {
+  static const key = 'notification';
+
   bool _isSelected = false;
 
-  void _changeHandler(bool val) {
+  @override
+  void initState() {
+    super.initState();
+    _loadNotificationSetting();
+  }
+
+  _loadNotificationSetting() async {
+    var prefs = await SharedPreferences.getInstance();
+    var notification = prefs.getBool(key);
+    if (notification != null) {
+      setState(() {
+        _isSelected = notification;
+      });
+    }
+  }
+
+  void _changeHandler(bool val) async {
+    var prefs = await SharedPreferences.getInstance();
     setState(() {
       _isSelected = val;
+      prefs.setBool(key, val);
     });
   }
 
