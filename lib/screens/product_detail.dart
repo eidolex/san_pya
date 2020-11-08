@@ -17,7 +17,7 @@ class ProductDetail extends StatelessWidget {
     var theme = Theme.of(context);
     var primaryColor = theme.primaryColor;
     var accentColor = theme.accentColor;
-
+    var headline1 = theme.textTheme.headline1;
     return Scaffold(
       appBar: appBar(context, "Product Detail"),
       body: SingleChildScrollView(
@@ -48,8 +48,7 @@ class ProductDetail extends StatelessWidget {
                           ),
                           Text(
                             "SED UP PERSPICIA UNDE OMNIS",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
+                            style: headline1,
                           ),
                           Container(
                             margin: Edge.eb4,

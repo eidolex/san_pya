@@ -9,6 +9,9 @@ class PasswordSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var containerHeight = fullScreenHeight(context);
+    var textTheme = Theme.of(context).textTheme;
+    var headline1 = textTheme.headline1;
+    var subTitle1 = textTheme.subtitle1;
     return Scaffold(
       appBar: appBar(context, "Account"),
       body: SingleChildScrollView(
@@ -25,15 +28,14 @@ class PasswordSettingScreen extends StatelessWidget {
                     margin: Edge.eb2,
                     child: Text(
                       "Change Password",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: headline1,
                     ),
                   ),
                   Container(
                       margin: Edge.eb4,
                       child: Text(
                         "You can reset your previous password here",
-                        style: TextStyle(fontSize: 10),
+                        style: subTitle1,
                       )),
                   AccountSettingInput(
                     label: "Old Password",
