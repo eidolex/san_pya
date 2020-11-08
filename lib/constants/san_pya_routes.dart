@@ -6,6 +6,7 @@ class SanPyaRoutes {
   static const login = '/login';
   static const accountSetting = '/account_setting';
   static const passwordSetting = '/password_setting';
+  static const languageSetting = '/language_setting';
   static const notificationSetting = '/notification_setting';
   static const productDetail = '/product_detail';
   static const shoppingCart = '/shopping_cart';
