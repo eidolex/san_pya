@@ -13,6 +13,10 @@ class ProfileScreen extends StatelessWidget {
   static const _trailingTextStyle = TextStyle(
       color: Color(0xFF9E9E9E), fontSize: 12, fontWeight: FontWeight.w500);
 
+  _nameChangeHandler() {}
+
+  _profileImageChangeHandler() {}
+
   @override
   Widget build(BuildContext context) {
     var primaryColor = Theme.of(context).primaryColor;
@@ -20,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: appBar(context, "Profile"),
       body: ListView(
         children: [
-          _buildProfileCover(),
+          _buildProfileCover(primaryColor),
           _buildListTile("Phone Number", text: "09254052523", showIcon: false),
           _buildListTile(
             "Change Password",
@@ -69,9 +73,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileCover() {
-    // TODO: add photo picker icon
-    // TODO: add name change icon
+  Widget _buildProfileCover(Color primaryColor) {
     return AspectRatio(
       aspectRatio: 4 / 3,
       child: Container(
@@ -87,34 +89,89 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: FractionallySizedBox(
-                        heightFactor: 0.5,
-                        child: AspectRatio(
-                            aspectRatio: 1,
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("graphics/profile.png"),
-                            )),
-                      ),
+                      child: buildProfileAvatar(primaryColor),
                     ),
-                    Container(
-                      margin: Edge.et4,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: 200),
-                        child: Text(
-                          "James Batron",
-                          overflow: TextOverflow.clip,
-                          maxLines: 2,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    )
+                    _buildName()
                   ]),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildProfileAvatar(Color primaryColor) {
+    return FractionallySizedBox(
+      heightFactor: 0.6,
+      child: AspectRatio(
+          aspectRatio: 1,
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage("graphics/profile.png"),
+                ),
+              ),
+              Transform.translate(
+                offset: Offset(0, -14),
+                child: FractionallySizedBox(
+                  widthFactor: 0.25,
+                  heightFactor: 0.25,
+                  child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100)),
+                      color: primaryColor,
+                      padding: EdgeInsets.zero,
+                      onPressed: _profileImageChangeHandler,
+                      child: LayoutBuilder(builder: (context, constraint) {
+                        return Icon(
+                          Icons.camera_alt,
+                          color: Colors.white,
+                          size: constraint.biggest.width / 2,
+                        );
+                      })),
+                ),
+              )
+            ],
+          )),
+    );
+  }
+
+  Widget _buildName() {
+    return Container(
+      margin: Edge.et4,
+      child: Transform.translate(
+        offset: Offset(17.5, 0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 200),
+              child: Text(
+                "Si Thu Hpyo",
+                overflow: TextOverflow.clip,
+                maxLines: 2,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+            SizedBox(
+              width: 35,
+              height: 35,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100)),
+                padding: EdgeInsets.zero,
+                child: Icon(Icons.edit, color: Colors.white, size: 22),
+                onPressed: _nameChangeHandler,
+              ),
+            ),
+          ],
         ),
       ),
     );
