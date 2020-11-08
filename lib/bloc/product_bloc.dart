@@ -11,7 +11,9 @@ part 'product_state.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProducRepository _productRepository;
 
-  ProductBloc(this._productRepository) : super(ProductInitial());
+  ProductBloc({ProducRepository productRepository})
+      : _productRepository = productRepository,
+        super(ProductInitial());
 
   @override
   Stream<ProductState> mapEventToState(

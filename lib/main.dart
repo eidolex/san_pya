@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    var productBloc = ProductBloc(productResponsitory);
+    var productBloc = ProductBloc(productRepository: productResponsitory);
     return MultiBlocProvider(
         providers: [
           BlocProvider<CartBloc>(create: (_) => CartBloc()..add(CartStarted()))
