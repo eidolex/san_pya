@@ -89,9 +89,9 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: buildProfileAvatar(primaryColor),
+                      child: _buildProfileAvatar(primaryColor),
                     ),
-                    _buildName()
+                    _buildProfileName()
                   ]),
             ),
           ),
@@ -100,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget buildProfileAvatar(Color primaryColor) {
+  Widget _buildProfileAvatar(Color primaryColor) {
     return FractionallySizedBox(
       heightFactor: 0.6,
       child: AspectRatio(
@@ -140,7 +140,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildName() {
+  Widget _buildProfileName() {
     const editButtonSize = 35.0;
 
     return Container(
