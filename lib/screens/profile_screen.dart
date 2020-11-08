@@ -141,10 +141,12 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget _buildName() {
+    const editButtonSize = 35.0;
+
     return Container(
       margin: Edge.et4,
       child: Transform.translate(
-        offset: Offset(17.5, 0),
+        offset: Offset(editButtonSize / 2, 0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -161,8 +163,8 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 35,
-              height: 35,
+              width: editButtonSize,
+              height: editButtonSize,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100)),
