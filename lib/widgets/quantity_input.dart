@@ -8,8 +8,14 @@ class QuantityInput extends StatefulWidget {
 
   final Color iconColor;
 
+  final void Function(int oldVal, int newVal) onChanged;
+
   const QuantityInput(
-      {Key key, @required this.width, this.height = 35, this.iconColor})
+      {Key key,
+      @required this.width,
+      this.height = 35,
+      this.iconColor,
+      this.onChanged})
       : super(key: key);
 
   @override
@@ -34,15 +40,19 @@ class _QuantityInputState extends State<QuantityInput> {
         children: [
           createButton(Icons.remove, () {
             if (_number > 1) {
+              var oldVal = _number;
               this.setState(() {
                 _number--;
+                if (widget.onChanged != null) widget.onChanged(oldVal, _number);
               });
             }
           }),
           createInput(),
           createButton(Icons.add, () {
+            var oldVal = _number;
             this.setState(() {
               _number++;
+              if (widget.onChanged != null) widget.onChanged(oldVal, _number);
             });
           })
         ],
