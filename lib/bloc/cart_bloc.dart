@@ -45,18 +45,20 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   ) async* {
     if (state is CartLoaded) {
       try {
-        var items = List.from(state.cart.items);
+        List<CartItem> items = List.from(state.cart.items);
         var index = items.indexOf(event.item);
         if (index > -1) {
           var item = state.cart.items[index];
-          item.quantity += event.item.quantity;
+          items.replaceRange(index, 1,
+              [item.copyWith(quantity: item.quantity + event.item.quantity)]);
         } else {
           items.add(event.item);
         }
         yield CartLoaded(
           cart: Cart(items: items),
         );
-      } catch (_) {
+      } catch (error) {
+        print(error);
         // yield CartError();
       }
     }
@@ -86,7 +88,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (state is CartLoaded) {
       try {
         List<CartItem> items = List.from(state.cart.items);
-        items[event.index].quantity += event.quantity;
+        var index = event.index;
+        var item = items[index];
+        items.replaceRange(index, 1,
+            [item.copyWith(quantity: item.quantity + event.quantity)]);
         yield CartLoaded(
           cart: Cart(items: items),
         );
@@ -103,7 +108,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (state is CartLoaded) {
       try {
         List<CartItem> items = List.from(state.cart.items);
-        items[event.index].quantity -= event.quantity;
+        var index = event.index;
+        var item = items[index];
+        items.replaceRange(index, 1,
+            [item.copyWith(quantity: item.quantity - event.quantity)]);
         yield CartLoaded(
           cart: Cart(items: items),
         );
