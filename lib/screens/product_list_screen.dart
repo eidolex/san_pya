@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:san_pya/bloc/cart_bloc.dart';
+import 'package:san_pya/bloc/product_bloc.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/constants/spacings.dart';
+import 'package:san_pya/models/cart_item.dart';
+import 'package:san_pya/models/product.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ProductBloc>(context).add(FetchProductListEvent());
     return Column(
       children: [
         Container(
@@ -14,16 +20,23 @@ class ProductListScreen extends StatelessWidget {
               border: BorderDirectional(
                   bottom:
                       BorderSide(width: 1, color: BoxBorderColors.primary))),
-          // TODO: design product list filter
         ),
         Expanded(
-          child: ListView.separated(
-            padding: Edge.eb4,
-            itemCount: 3,
-            separatorBuilder: (BuildContext context, int index) =>
-                Divider(height: 1, color: BoxBorderColors.primary),
-            itemBuilder: (BuildContext context, int index) {
-              return _ProductListItem(title: 'Category A');
+          child: BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductListLoaded) {
+                return ListView.separated(
+                  padding: Edge.eb4,
+                  itemCount: state.products.length,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(height: 1, color: BoxBorderColors.primary),
+                  itemBuilder: (BuildContext context, int index) {
+                    return _ProductListItem(
+                        title: 'Category A', products: state.products[index]);
+                  },
+                );
+              }
+              return Container();
             },
           ),
         ),
@@ -33,9 +46,13 @@ class ProductListScreen extends StatelessWidget {
 }
 
 class _ProductListItem extends StatelessWidget {
+  final List<Product> products;
+
   final String title;
 
-  const _ProductListItem({Key key, @required this.title}) : super(key: key);
+  const _ProductListItem(
+      {Key key, @required this.title, @required this.products})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +72,9 @@ class _ProductListItem extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: Edge.eb4,
-            itemCount: 10,
+            itemCount: products.length,
             itemBuilder: (BuildContext context, int position) {
-              return _Product();
+              return _Product(product: products[position]);
             },
           ),
         )
@@ -67,7 +84,15 @@ class _ProductListItem extends StatelessWidget {
 }
 
 class _Product extends StatelessWidget {
-  void _addToCartHandler() {}
+  final Product product;
+
+  const _Product({Key key, @required this.product}) : super(key: key);
+
+  void _addToCartHandler(BuildContext context) {
+    context
+        .read<CartBloc>()
+        .add(CartItemAdded(CartItem(product: product, quantity: 1)));
+  }
 
   void _itemTapHandler(BuildContext context) {
     Navigator.pushNamed(context, SanPyaRoutes.productDetail);
@@ -77,7 +102,6 @@ class _Product extends StatelessWidget {
   Widget build(BuildContext context) {
     var accentColor = Theme.of(context).accentColor;
     var primaryColor = Theme.of(context).primaryColor;
-    var radiusCircluar = Radius.circular(8);
     return Container(
       width: 230,
       margin: Edge.ex4,
@@ -97,7 +121,7 @@ class _Product extends StatelessWidget {
                   buildProductInfo(accentColor),
                   Container(
                     alignment: Alignment.bottomRight,
-                    child: buildFlatButton(radiusCircluar, accentColor),
+                    child: _buildFlatButton(context, accentColor),
                   )
                 ],
               ),
@@ -140,7 +164,7 @@ class _Product extends StatelessWidget {
               color: primaryColor,
               padding: Edge.e3,
               child: Text(
-                "Promotion Price",
+                product.name,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 8,
@@ -179,12 +203,12 @@ class _Product extends StatelessWidget {
               Container(
                 margin: Edge.eb2,
                 child: Text(
-                  "Product Name",
+                  product.name,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
               ),
               Text(
-                "MMK 10000 / viss",
+                "MMK ${product.price} / viss",
                 style: TextStyle(fontSize: 10),
               ),
             ],
@@ -204,14 +228,15 @@ class _Product extends StatelessWidget {
     ));
   }
 
-  FlatButton buildFlatButton(Radius radiusCircluar, Color accentColor) {
+  FlatButton _buildFlatButton(BuildContext context, Color accentColor) {
+    var radiusCircluar = Radius.circular(8);
     return FlatButton(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.only(
               topStart: radiusCircluar, bottomEnd: radiusCircluar)),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       color: accentColor,
-      onPressed: _addToCartHandler,
+      onPressed: () => _addToCartHandler(context),
       child: Text(
         "Add To Cart",
         style: TextStyle(fontSize: 10, color: Colors.white),
