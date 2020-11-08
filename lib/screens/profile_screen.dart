@@ -35,7 +35,9 @@ class ProfileScreen extends StatelessWidget {
           _buildSubListTile("Setting"),
           _buildListTile("Order History", onPressed: () {}),
           _buildListTile("Language", text: "English", onPressed: () {}),
-          _buildListTile("Notification", onPressed: () {}),
+          _buildListTile("Notification", onPressed: () {
+            Navigator.pushNamed(context, SanPyaRoutes.notificationSetting);
+          }),
           _buildSubListTile("Support"),
           _buildListTile("Help Center", onPressed: () {}),
           _buildListTile("Privacy & Policy", onPressed: () {}),
