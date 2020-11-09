@@ -21,10 +21,10 @@ class FakeProducRepository extends ProducRepository {
     return Future.delayed(Duration(seconds: 1), () {
       final random = Random();
 
-      int row = random.nextInt(5);
+      int row = random.nextInt(5 - 1) + 1;
       int id = 1;
       return List.generate(row, (_) {
-        int col = random.nextInt(10);
+        int col = random.nextInt(10 - 1) + 1;
         return List.generate((col), (index) {
           var product = Product(id: id, name: "Product Name $id", price: 10000);
           id++;
