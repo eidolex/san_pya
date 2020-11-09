@@ -18,5 +18,10 @@ class CartItem extends Equatable {
   }
 
   @override
-  List<Object> get props => [product];
+  List<Object> get props => [product, quantity];
+
+  @override
+  String toString() {
+    return "id: ${product.id}, quanitity: $quantity";
+  }
 }
