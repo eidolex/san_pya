@@ -21,7 +21,7 @@ class FakeProducRepository extends ProducRepository {
     return Future.delayed(Duration(seconds: 1), () {
       final random = Random();
 
-      int row = random.nextInt(5 - 1) + 1;
+      int row = random.nextInt(5 - 2) + 2;
       int id = 1;
       return List.generate(row, (_) {
         int col = random.nextInt(10 - 1) + 1;
