@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:san_pya/main.dart';
+import 'package:san_pya/repository/order_repository.dart';
 import 'package:san_pya/repository/product_repository.dart';
 
 void main() {
@@ -16,6 +17,7 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(
       productResponsitory: FakeProductRepository(),
+      orderRepository: FakeOrderRepository(),
     ));
 
     // Verify that our counter starts at 0.
