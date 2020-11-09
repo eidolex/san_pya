@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    var productBloc = ProductBloc(productRepository: productResponsitory);
+    var productBloc = ProductBloc(productRepository: productResponsitory)
+      ..add(FetchProductListEvent());
     return MultiBlocProvider(
         providers: [
           BlocProvider<CartBloc>(create: (_) => CartBloc()..add(CartStarted()))

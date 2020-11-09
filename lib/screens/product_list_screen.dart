@@ -11,7 +11,6 @@ import 'package:san_pya/models/product.dart';
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ProductBloc>(context).add(FetchProductListEvent());
     return Column(
       children: [
         Container(
