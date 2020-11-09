@@ -15,7 +15,7 @@ class ShoppingCartScreen extends StatelessWidget {
 
   void _changeProductQuantity(
       BuildContext context, int index, int, int newVal) {
-    context.read<CartBloc>().add(CartChangeItemQuantity(index, newVal));
+    context.read<CartBloc>().add(CartItemQuantityChanged(index, newVal));
   }
 
   void _checkOutHandler(BuildContext context) {

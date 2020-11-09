@@ -20,8 +20,8 @@ class CartAddItemQuantity extends CartEvent {
   List<Object> get props => [index, quantity];
 }
 
-class CartChangeItemQuantity extends CartEvent {
-  const CartChangeItemQuantity(this.index, this.quantity);
+class CartItemQuantityChanged extends CartEvent {
+  const CartItemQuantityChanged(this.index, this.quantity);
 
   final int index;
 
