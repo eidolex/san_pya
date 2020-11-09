@@ -10,4 +10,5 @@ class SanPyaRoutes {
   static const notificationSetting = '/notification_setting';
   static const productDetail = '/product_detail';
   static const shoppingCart = '/shopping_cart';
+  static const orderHistory = '/order_history';
 }
