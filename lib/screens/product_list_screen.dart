@@ -163,7 +163,7 @@ class _Product extends StatelessWidget {
               color: primaryColor,
               padding: Edge.e3,
               child: Text(
-                product.name,
+                "Promotion Price",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 8,
