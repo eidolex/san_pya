@@ -31,15 +31,11 @@ class CartChangeItemQuantity extends CartEvent {
   List<Object> get props => [index, quantity];
 }
 
-class CartReduceItemQuantity extends CartEvent {
-  const CartReduceItemQuantity(this.index, this.quantity);
-
-  final int index;
-
-  final int quantity;
+class CartItemCheckout extends CartEvent {
+  const CartItemCheckout();
 
   @override
-  List<Object> get props => [index, quantity];
+  List<Object> get props => [];
 }
 
 class CartItemAdded extends CartEvent {
