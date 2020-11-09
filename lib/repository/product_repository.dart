@@ -26,7 +26,9 @@ class FakeProducRepository extends ProducRepository {
       return List.generate(row, (_) {
         int col = random.nextInt(10 - 1) + 1;
         return List.generate((col), (index) {
-          var product = Product(id: id, name: "Product Name $id", price: 10000);
+          int price = random.nextInt(5 - 1) + 1;
+          var product =
+              Product(id: id, name: "Product Name $id", price: price * 10000);
           id++;
           return product;
         });
