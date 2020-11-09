@@ -8,6 +8,8 @@ class QuantityInput extends StatefulWidget {
 
   final Color iconColor;
 
+  final int initialVaule;
+
   final void Function(int oldVal, int newVal) onChanged;
 
   const QuantityInput(
@@ -15,7 +17,8 @@ class QuantityInput extends StatefulWidget {
       @required this.width,
       this.height = 35,
       this.iconColor,
-      this.onChanged})
+      this.onChanged,
+      this.initialVaule})
       : super(key: key);
 
   @override
@@ -26,6 +29,16 @@ class _QuantityInputState extends State<QuantityInput> {
   final double buttonWidth = 35;
 
   int _number = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      if (widget.initialVaule != null) {
+        _number = widget.initialVaule;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
