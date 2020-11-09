@@ -22,10 +22,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       yield* _mapCartItemAddedToState(event, state);
     } else if (event is CartItemRemoved) {
       yield* _mapCartItemRemovedToState(event, state);
-    } else if (event is CartAddItemQuantity) {
-      yield* _mapCartAddItemQuantityToState(event, state);
-    } else if (event is CartReduceItemQuantity) {
-      yield* _mapCartReduceItemQuantityToState(event, state);
+    } else if (event is CartChangeItemQuantity) {
+      yield* _mapCartChangeItemQuantityToState(event, state);
     }
   }
 
@@ -46,11 +44,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (state is CartLoaded) {
       try {
         List<CartItem> items = List.from(state.cart.items);
-        var index = items.indexOf(event.item);
+        var index =
+            items.indexWhere((item) => item.product == event.item.product);
         if (index > -1) {
           var item = state.cart.items[index];
-          items.replaceRange(index, 1,
-              [item.copyWith(quantity: item.quantity + event.item.quantity)]);
+          items[index] =
+              item.copyWith(quantity: item.quantity + event.item.quantity);
         } else {
           items.add(event.item);
         }
@@ -81,8 +80,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  Stream<CartState> _mapCartAddItemQuantityToState(
-    CartAddItemQuantity event,
+  Stream<CartState> _mapCartChangeItemQuantityToState(
+    CartChangeItemQuantity event,
     CartState state,
   ) async* {
     if (state is CartLoaded) {
@@ -90,28 +89,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         List<CartItem> items = List.from(state.cart.items);
         var index = event.index;
         var item = items[index];
-        items.replaceRange(index, 1,
-            [item.copyWith(quantity: item.quantity + event.quantity)]);
-        yield CartLoaded(
-          cart: Cart(items: items),
-        );
-      } catch (_) {
-        // yield CartError();
-      }
-    }
-  }
-
-  Stream<CartState> _mapCartReduceItemQuantityToState(
-    CartReduceItemQuantity event,
-    CartState state,
-  ) async* {
-    if (state is CartLoaded) {
-      try {
-        List<CartItem> items = List.from(state.cart.items);
-        var index = event.index;
-        var item = items[index];
-        items.replaceRange(index, 1,
-            [item.copyWith(quantity: item.quantity - event.quantity)]);
+        items[index] = item.copyWith(quantity: event.quantity);
         yield CartLoaded(
           cart: Cart(items: items),
         );
