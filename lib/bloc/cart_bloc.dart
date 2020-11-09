@@ -111,7 +111,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     CartState state,
   ) async* {
     if (state is CartLoaded) {
-      _orderRepository.placeOrder(state.cart);
+      await _orderRepository.placeOrder(state.cart);
       yield CartLoaded();
       try {} catch (_) {}
     }

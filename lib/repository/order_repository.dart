@@ -10,9 +10,9 @@ abstract class OrderRepository {
 }
 
 class FakeOrderRepository extends OrderRepository {
-  List<Order> orders;
+  List<Order> orders = [];
 
-  FakeOrderRepository({this.orders = const []}) : super();
+  FakeOrderRepository() : super();
 
   @override
   Future<Order> fetchOrderDetail(int id) {
@@ -36,7 +36,10 @@ class FakeOrderRepository extends OrderRepository {
       int status = rand.nextInt(3 + 1) - 1;
       int orderId = date.millisecondsSinceEpoch;
       return orders.add(new Order(
-          id: orderId, items: cart.items, status: status, createdAt: date));
+          id: orderId,
+          items: List.from(cart.items),
+          status: status,
+          createdAt: date));
     });
   }
 }
