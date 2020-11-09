@@ -5,12 +5,21 @@ import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/cart_item.dart';
 import 'package:san_pya/widgets/app_bar.dart';
+import 'package:san_pya/widgets/block_button.dart';
 import 'package:san_pya/widgets/quantity_input.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
+  void _removeCartItem(BuildContext context, int index) {
+    context.read<CartBloc>().add(CartItemRemoved(index));
+  }
+
   void _changeProductQuantity(
       BuildContext context, int index, int, int newVal) {
     context.read<CartBloc>().add(CartChangeItemQuantity(index, newVal));
+  }
+
+  void _checkOutHandler(BuildContext context) {
+    context.read<CartBloc>().add(CartItemCheckout());
   }
 
   @override
@@ -22,15 +31,61 @@ class ShoppingCartScreen extends StatelessWidget {
       appBar: appBar(context, "Shopping Cart"),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
+          var total = state is CartLoaded ? state.cart.totalPrice : 0;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildTitle(headline1: headline1),
               _buildSubTitle(0, subTitle1: subTitle1),
               if (state is CartLoaded) _buildCartItemList(state.cart.items),
+              _buildCheckoutPart(context, total)
             ],
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildCheckoutPart(BuildContext context, int total) {
+    var accentColor = Theme.of(context).accentColor;
+    return Container(
+      width: double.infinity,
+      padding: Edge.e4,
+      decoration: BoxDecoration(
+          border: Border(
+              top: BorderSide(color: BoxBorderColors.primary, width: 1))),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("Total",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+              Text("MMK $total",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+            ],
+          ),
+          Padding(padding: Edge.e4),
+          BlockButton(
+              text: "Check Out", onPressed: () => _checkOutHandler(context)),
+          Padding(padding: Edge.e2),
+          SizedBox(
+            width: double.infinity,
+            child: OutlineButton(
+              textColor: accentColor,
+              borderSide: BorderSide(color: accentColor, width: 1),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6)),
+              padding: EdgeInsets.only(top: Spacing.s4, bottom: Spacing.s4),
+              child: Text("Continue Shopping"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -96,11 +151,8 @@ class ShoppingCartScreen extends StatelessWidget {
                             FlatButton(
                                 minWidth: double.minPositive,
                                 height: double.minPositive,
-                                onPressed: () {
-                                  context
-                                      .read<CartBloc>()
-                                      .add(CartItemRemoved(index));
-                                },
+                                onPressed: () =>
+                                    _removeCartItem(context, index),
                                 child: Text("Remove",
                                     style: TextStyle(
                                         color: primaryColor,
