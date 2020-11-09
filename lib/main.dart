@@ -4,6 +4,7 @@ import 'package:san_pya/bloc/cart_bloc.dart';
 import 'package:san_pya/bloc/product_bloc.dart';
 import 'package:san_pya/constants/san_pya_fonts.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
+import 'package:san_pya/repository/order_repository.dart';
 import 'package:san_pya/repository/product_repository.dart';
 import 'package:san_pya/screens/language_setting_screen.dart';
 import 'package:san_pya/screens/login_screen.dart';
@@ -18,13 +19,20 @@ import 'package:san_pya/screens/shopping_cart_screen.dart';
 void main() {
   runApp(MyApp(
     productResponsitory: FakeProductRepository(),
+    orderRepository: FakeOrderRepository(),
   ));
 }
 
 class MyApp extends StatelessWidget {
   final ProductRepository productResponsitory;
 
-  const MyApp({Key key, @required this.productResponsitory}) : super(key: key);
+  final OrderRepository orderRepository;
+
+  const MyApp(
+      {Key key,
+      @required this.productResponsitory,
+      @required this.orderRepository})
+      : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -33,7 +41,9 @@ class MyApp extends StatelessWidget {
       ..add(FetchProductListEvent());
     return MultiBlocProvider(
         providers: [
-          BlocProvider<CartBloc>(create: (_) => CartBloc()..add(CartStarted()))
+          BlocProvider<CartBloc>(
+              create: (_) => CartBloc(orderRepository: orderRepository)
+                ..add(CartStarted()))
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

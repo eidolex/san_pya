@@ -5,12 +5,17 @@ import 'package:equatable/equatable.dart';
 import 'package:san_pya/models/cart.dart';
 import 'package:san_pya/models/cart_item.dart';
 import 'package:meta/meta.dart';
+import 'package:san_pya/repository/order_repository.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(CartInitial());
+  final OrderRepository _orderRepository;
+
+  CartBloc({OrderRepository orderRepository})
+      : _orderRepository = orderRepository,
+        super(CartInitial());
 
   @override
   Stream<CartState> mapEventToState(
@@ -106,6 +111,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     CartState state,
   ) async* {
     if (state is CartLoaded) {
+      _orderRepository.placeOrder(state.cart);
       yield CartLoaded();
       try {} catch (_) {}
     }
