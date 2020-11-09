@@ -22,21 +22,12 @@ class ShoppingCartScreen extends StatelessWidget {
       appBar: appBar(context, "Shopping Cart"),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
-          if (state is CartLoaded) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTitle(headline1: headline1),
-                _buildSubTitle(state.cart.items.length, subTitle1: subTitle1),
-                _buildCartItemList(state.cart.items),
-              ],
-            );
-          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildTitle(headline1: headline1),
               _buildSubTitle(0, subTitle1: subTitle1),
+              if (state is CartLoaded) _buildCartItemList(state.cart.items),
             ],
           );
         },
