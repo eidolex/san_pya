@@ -17,12 +17,12 @@ import 'package:san_pya/screens/shopping_cart_screen.dart';
 
 void main() {
   runApp(MyApp(
-    productResponsitory: FakeProducRepository(),
+    productResponsitory: FakeProductRepository(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  final ProducRepository productResponsitory;
+  final ProductRepository productResponsitory;
 
   const MyApp({Key key, @required this.productResponsitory}) : super(key: key);
   // This widget is the root of your application.

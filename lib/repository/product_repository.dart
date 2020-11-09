@@ -2,13 +2,13 @@ import 'dart:math';
 
 import 'package:san_pya/models/product.dart';
 
-abstract class ProducRepository {
+abstract class ProductRepository {
   Future<Product> fetchProductDetailById(int id);
 
   Future<List<List<Product>>> fetchProducts();
 }
 
-class FakeProducRepository extends ProducRepository {
+class FakeProductRepository extends ProductRepository {
   @override
   Future<Product> fetchProductDetailById(int id) {
     return Future.delayed(Duration(seconds: 1), () {

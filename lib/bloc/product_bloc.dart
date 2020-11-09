@@ -9,9 +9,9 @@ part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final ProducRepository _productRepository;
+  final ProductRepository _productRepository;
 
-  ProductBloc({ProducRepository productRepository})
+  ProductBloc({ProductRepository productRepository})
       : _productRepository = productRepository,
         super(ProductInitial());
 
