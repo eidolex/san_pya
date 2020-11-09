@@ -122,16 +122,19 @@ class ShoppingCartScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text.rich(TextSpan(children: [
-                              TextSpan(
-                                  text: item.product.name,
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600)),
-                              TextSpan(
-                                  text: " (small)",
-                                  style: TextStyle(fontSize: 10)),
-                            ])),
+                            Text.rich(
+                                TextSpan(children: [
+                                  TextSpan(
+                                      text: item.product.name,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600)),
+                                  TextSpan(
+                                      text: " (small)",
+                                      style: TextStyle(fontSize: 10)),
+                                ]),
+                                maxLines: 2,
+                                overflow: TextOverflow.clip),
                             Text("MMK ${item.product.price} / viss",
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontSize: 10)),
