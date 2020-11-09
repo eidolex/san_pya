@@ -5,8 +5,14 @@ import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/cart_item.dart';
 import 'package:san_pya/widgets/app_bar.dart';
+import 'package:san_pya/widgets/quantity_input.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
+  void _changeProductQuantity(
+      BuildContext context, int index, int, int newVal) {
+    context.read<CartBloc>().add(CartChangeItemQuantity(index, newVal));
+  }
+
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -17,7 +23,6 @@ class ShoppingCartScreen extends StatelessWidget {
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state is CartLoaded) {
-            print(state.cart.items);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,7 +51,86 @@ class ShoppingCartScreen extends StatelessWidget {
                 Divider(height: 1, color: BoxBorderColors.primary),
             itemCount: items.length,
             itemBuilder: (context, index) {
-              return Text(items[index].product.name);
+              var primaryColor = Theme.of(context).primaryColor;
+              var item = items[index];
+              var price = item.quantity * item.product.price;
+              return Padding(
+                padding: Edge.e4,
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("graphics/image1.png"),
+                                    fit: BoxFit.cover),
+                                borderRadius: BorderRadius.circular(8)),
+                          )),
+                      Padding(padding: Edge.el3),
+                      ConstrainedBox(
+                        constraints: BoxConstraints(minWidth: 200),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item.product.name,
+                              overflow: TextOverflow.clip,
+                              maxLines: 2,
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w600),
+                            ),
+                            Text("MMK ${item.product.price} / viss",
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(fontSize: 10)),
+                            Padding(padding: Edge.e3),
+                            QuantityInput(
+                              width: 140,
+                              initialVaule: item.quantity,
+                              onChanged: (oldVal, newVal) =>
+                                  _changeProductQuantity(
+                                      context, index, oldVal, newVal),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                            FlatButton(
+                                minWidth: double.minPositive,
+                                height: double.minPositive,
+                                onPressed: () {
+                                  context
+                                      .read<CartBloc>()
+                                      .add(CartItemRemoved(index));
+                                },
+                                child: Text("Remove",
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w500)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 0, vertical: Spacing.s3),
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap),
+                            Text(
+                              "MMK $price",
+                              maxLines: 2,
+                              overflow: TextOverflow.clip,
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500),
+                            ),
+                          ]))
+                    ],
+                  ),
+                ),
+              );
             }));
   }
 
