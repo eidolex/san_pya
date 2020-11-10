@@ -147,7 +147,16 @@ class _OrderListItem extends StatelessWidget {
   }
 
   String get _productListName {
-    return "Product 1, Product 2";
+    int length = order.items.length;
+    length = length > 3 ? 3 : length;
+    String result = '';
+    for (var i = 0; i < length; i++) {
+      result += order.items[i].product.name;
+      if (i + 1 != length) {
+        result += ', ';
+      }
+    }
+    return result;
   }
 
   String get _orderDate {
