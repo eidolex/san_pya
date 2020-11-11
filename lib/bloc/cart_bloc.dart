@@ -64,7 +64,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           cart: Cart(items: items),
         );
       } catch (error) {
-        print(error);
         // yield CartError();
       }
     }
@@ -111,7 +110,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     CartState state,
   ) async* {
     if (state is CartLoaded) {
-      await _orderRepository.placeOrder(state.cart);
+      if (state.cart.items.length > 0) {
+        await _orderRepository.placeOrder(state.cart);
+      }
       yield CartLoaded();
       try {} catch (_) {}
     }
