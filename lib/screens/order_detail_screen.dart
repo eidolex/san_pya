@@ -38,7 +38,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
       body: BlocConsumer<OrderBloc, OrderState>(
         listener: (context, state) {
           if (state.detailFetchStatus == OrderStatus.failure) {
-            // Navigator.popAndPushNamed(context, SanPyaRoutes.orderHistory);
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {
@@ -87,7 +87,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                 ),
               );
             default:
-              return Container();
+              var size = MediaQuery.of(context).size.width / 3;
+              return Center(
+                  child: SizedBox(
+                      width: size,
+                      height: size,
+                      child: CircularProgressIndicator(strokeWidth: 1.5)));
           }
         },
       ),
