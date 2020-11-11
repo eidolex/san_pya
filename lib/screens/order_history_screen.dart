@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:san_pya/bloc/order_bloc.dart';
 import 'package:san_pya/constants/colors.dart';
+import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/order.dart';
+import 'package:san_pya/utils/format_date.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/bottom_loader.dart';
 
@@ -73,21 +75,6 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
 class _OrderListItem extends StatelessWidget {
   final Order order;
 
-  static const List<String> _months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec'
-  ];
-
   const _OrderListItem({Key key, @required this.order}) : super(key: key);
 
   @override
@@ -98,51 +85,54 @@ class _OrderListItem extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
-      child: IntrinsicHeight(
-          child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildOrderImage(),
-          Padding(padding: Edge.el3),
-          Expanded(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                Text("Order Id - ${order.id}",
-                    style:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-                Text(
-                  _productListName,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Padding(padding: Edge.e4),
-                Text("MMK ${order.totalPrice}",
-                    style:
-                        TextStyle(fontSize: 10, fontWeight: FontWeight.w500)),
-              ])),
-          Padding(padding: Edge.el3),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(_orderDate,
-                  style: TextStyle(fontSize: 8, color: Color(0xFFC4C4C4))),
-              FlatButton(
-                  minWidth: double.minPositive,
-                  height: double.minPositive,
-                  onPressed: () => {_detailHandler(context)},
-                  child: Text("Detail",
-                      style: TextStyle(
-                          color: accentColor,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500)),
-                  padding: EdgeInsets.zero,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
-            ],
-          )
-        ],
-      )),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, SanPyaRoutes.orderDetail),
+        child: IntrinsicHeight(
+            child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildOrderImage(),
+            Padding(padding: Edge.el3),
+            Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  Text("Order Id - ${order.id}",
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                  Text(
+                    _productListName,
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Padding(padding: Edge.e4),
+                  Text("MMK ${order.totalPrice}",
+                      style:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500)),
+                ])),
+            Padding(padding: Edge.el3),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(_orderDate,
+                    style: TextStyle(fontSize: 8, color: Color(0xFFC4C4C4))),
+                FlatButton(
+                    minWidth: double.minPositive,
+                    height: double.minPositive,
+                    onPressed: () => {_detailHandler(context)},
+                    child: Text("Detail",
+                        style: TextStyle(
+                            color: accentColor,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500)),
+                    padding: EdgeInsets.zero,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
+              ],
+            )
+          ],
+        )),
+      ),
     );
   }
 
@@ -160,9 +150,7 @@ class _OrderListItem extends StatelessWidget {
   }
 
   String get _orderDate {
-    var date = order.createdAt;
-    var month = _months[date.month - 1];
-    return "${date.day} $month ${date.year}";
+    return formatDate(order.createdAt);
   }
 
   Widget _buildOrderImage() {
