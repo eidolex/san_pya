@@ -27,6 +27,10 @@ class AppRouter {
       : _orderBloc = OrderBloc(orderRepository: orderRepository),
         _productBloc = ProductBloc(productRepository: productRepository);
 
+  init() {
+    _productBloc.add(FetchProductListEvent());
+  }
+
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case SanPyaRoutes.main:

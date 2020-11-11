@@ -54,6 +54,12 @@ class _MyAppState extends State<MyApp> {
             productRepository: productRepository);
 
   @override
+  void initState() {
+    super.initState();
+    _router.init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
     return MultiBlocProvider(
