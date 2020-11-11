@@ -5,6 +5,7 @@ import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/order.dart';
+import 'package:san_pya/screens/order_detail_screen.dart';
 import 'package:san_pya/utils/format_date.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/bottom_loader.dart';
@@ -35,7 +36,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
       body: BlocConsumer<OrderBloc, OrderState>(
         listener: (context, state) {},
         builder: (context, state) {
-          switch (state.status) {
+          switch (state.listFetchStatus) {
             case OrderStatus.success:
             case OrderStatus.failure:
               return ListView.builder(
@@ -162,6 +163,7 @@ class _OrderListItem extends StatelessWidget {
   }
 
   void _detailHandler(BuildContext context) {
-    Navigator.pushNamed(context, SanPyaRoutes.orderDetail);
+    Navigator.pushNamed(context, SanPyaRoutes.orderDetail,
+        arguments: OrderDetailScreenArgs(order.id));
   }
 }

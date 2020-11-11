@@ -34,7 +34,6 @@ class ProfileScreen extends StatelessWidget {
           ),
           _buildSubListTile("Setting"),
           _buildListTile("Order History", onPressed: () {
-            print('here');
             Navigator.pushNamed(context, SanPyaRoutes.orderHistory);
           }),
           _buildListTile("Language", text: "English", onPressed: () {
