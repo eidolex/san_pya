@@ -118,7 +118,7 @@ class ShoppingCartScreen extends StatelessWidget {
                           )),
                       Padding(padding: Edge.el3),
                       ConstrainedBox(
-                        constraints: BoxConstraints(minWidth: 200),
+                        constraints: BoxConstraints(maxWidth: 200),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -140,7 +140,7 @@ class ShoppingCartScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 10)),
                             Padding(padding: Edge.e3),
                             QuantityInput(
-                              width: 140,
+                              width: 120,
                               initialVaule: item.quantity,
                               onChanged: (oldVal, newVal) =>
                                   _changeProductQuantity(
@@ -160,6 +160,7 @@ class ShoppingCartScreen extends StatelessWidget {
                                 onPressed: () =>
                                     _removeCartItem(context, index),
                                 child: Text("Remove",
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: primaryColor,
                                         fontSize: 10,
