@@ -80,13 +80,13 @@ class _OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var accentColor = Theme.of(context).accentColor;
-    return Container(
-      padding: Edge.e4,
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
-      child: InkWell(
-        onTap: () => Navigator.pushNamed(context, SanPyaRoutes.orderDetail),
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, SanPyaRoutes.orderDetail),
+      child: Container(
+        padding: Edge.e4,
+        decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
         child: IntrinsicHeight(
             child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
