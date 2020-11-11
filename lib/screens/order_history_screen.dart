@@ -80,59 +80,56 @@ class _OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var accentColor = Theme.of(context).accentColor;
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, SanPyaRoutes.orderDetail),
-      child: Container(
-        padding: Edge.e4,
-        decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
-        child: IntrinsicHeight(
-            child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildOrderImage(),
-            Padding(padding: Edge.el3),
-            Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                  Text("Order Id - ${order.id}",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-                  Text(
-                    _productListName,
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Padding(padding: Edge.e4),
-                  Text("MMK ${order.totalPrice}",
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500)),
-                ])),
-            Padding(padding: Edge.el3),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(_orderDate,
-                    style: TextStyle(fontSize: 8, color: Color(0xFFC4C4C4))),
-                FlatButton(
-                    minWidth: double.minPositive,
-                    height: double.minPositive,
-                    onPressed: () => {_detailHandler(context)},
-                    child: Text("Detail",
-                        style: TextStyle(
-                            color: accentColor,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500)),
-                    padding: EdgeInsets.zero,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
-              ],
-            )
-          ],
-        )),
-      ),
+    return Container(
+      padding: Edge.e4,
+      decoration: BoxDecoration(
+          border: Border(
+              bottom: BorderSide(width: 1, color: BoxBorderColors.primary))),
+      child: IntrinsicHeight(
+          child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildOrderImage(),
+          Padding(padding: Edge.el3),
+          Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                Text("Order Id - ${order.id}",
+                    style:
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                Text(
+                  _productListName,
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Padding(padding: Edge.e4),
+                Text("MMK ${order.totalPrice}",
+                    style:
+                        TextStyle(fontSize: 10, fontWeight: FontWeight.w500)),
+              ])),
+          Padding(padding: Edge.el3),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(_orderDate,
+                  style: TextStyle(fontSize: 8, color: Color(0xFFC4C4C4))),
+              FlatButton(
+                  minWidth: double.minPositive,
+                  height: double.minPositive,
+                  onPressed: () => {_detailHandler(context)},
+                  child: Text("Detail",
+                      style: TextStyle(
+                          color: accentColor,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500)),
+                  padding: EdgeInsets.zero,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
+            ],
+          )
+        ],
+      )),
     );
   }
 
@@ -165,6 +162,6 @@ class _OrderListItem extends StatelessWidget {
   }
 
   void _detailHandler(BuildContext context) {
-    print('here');
+    Navigator.pushNamed(context, SanPyaRoutes.orderDetail);
   }
 }
