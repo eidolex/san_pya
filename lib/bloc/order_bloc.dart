@@ -21,6 +21,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   ) async* {
     if (event is OrderFetched) {
       yield await _mapOrderFetchedToState(state);
+    } else if (event is OrderDetailFetched) {
+      yield* await _mapOrderDetailFetchedToState(event, state);
     }
   }
 
@@ -28,10 +30,25 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     try {
       // if (state.status == OrderStatus.initial) {
       final orders = await _orderRepository.fetchOrderList();
-      return state.copyWith(status: OrderStatus.success, orders: orders);
+      return state.copyWith(
+          listFetchStatus: OrderStatus.success, orders: orders);
       // } else {}
     } on Exception {
-      return state.copyWith(status: OrderStatus.failure);
+      return state.copyWith(listFetchStatus: OrderStatus.failure);
+    }
+  }
+
+  Stream<OrderState> _mapOrderDetailFetchedToState(
+      OrderDetailFetched event, OrderState orderState) async* {
+    yield state.copyWith(detailFetchStatus: OrderStatus.initial);
+    try {
+      final order = await _orderRepository.fetchOrderDetail(event.id);
+      yield state.copyWith(
+        detailFetchStatus: OrderStatus.success,
+        order: order,
+      );
+    } on Exception {
+      yield state.copyWith(listFetchStatus: OrderStatus.failure);
     }
   }
 }
