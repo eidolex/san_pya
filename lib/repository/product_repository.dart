@@ -11,14 +11,14 @@ abstract class ProductRepository {
 class FakeProductRepository extends ProductRepository {
   @override
   Future<Product> fetchProductDetailById(int id) {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(microseconds: 700), () {
       return Product(id: id, name: "Product Name $id", price: 10000);
     });
   }
 
   @override
   Future<List<List<Product>>> fetchProducts() {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(microseconds: 700), () {
       final random = Random();
 
       int row = random.nextInt(5 - 2) + 2;

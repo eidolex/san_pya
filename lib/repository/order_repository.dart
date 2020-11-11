@@ -20,14 +20,14 @@ class FakeOrderRepository extends OrderRepository {
 
   @override
   Future<Order> fetchOrderDetail(int id) {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(milliseconds: 700), () {
       return orders.firstWhere((order) => order.id == id);
     });
   }
 
   @override
   Future<List<Order>> fetchOrderList() {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(milliseconds: 700), () {
       if (orders.length == 0) {
         _generateOrders();
       }
@@ -37,7 +37,7 @@ class FakeOrderRepository extends OrderRepository {
 
   @override
   Future<void> placeOrder(Cart cart) {
-    return Future.delayed(Duration(seconds: 1), () {
+    return Future.delayed(Duration(milliseconds: 700), () {
       final rand = Random();
       var date = DateTime.now();
       int status = rand.nextInt(3 + 1) - 1;
