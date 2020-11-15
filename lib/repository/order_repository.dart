@@ -40,7 +40,7 @@ class FakeOrderRepository extends OrderRepository {
     return Future.delayed(Duration(milliseconds: 700), () {
       final rand = Random();
       var date = DateTime.now();
-      int status = rand.nextInt(3 + 1) - 1;
+      int status = rand.nextInt(3);
       int orderId = date.millisecondsSinceEpoch;
       return orders.add(new Order(
           id: orderId,
@@ -51,14 +51,14 @@ class FakeOrderRepository extends OrderRepository {
   }
 
   void _generateOrders() {
-    int count = _rand.nextInt(20 + 2) - 2;
+    int count = _rand.nextInt(20 - 2) + 2;
 
     var products = _generateProducts();
 
     for (var i = 0; i < count; i++) {
       int orderId = i + 1;
 
-      int status = _rand.nextInt(3 + 1) - 1;
+      int status = _rand.nextInt(3);
 
       List<CartItem> items = _generateCartItems(products);
 
