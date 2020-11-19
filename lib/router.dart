@@ -5,8 +5,9 @@ import 'package:san_pya/repository/product_repository.dart';
 import 'package:san_pya/screens/language_setting_screen.dart';
 import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
-import 'package:san_pya/screens/merchant_order_detail.dart';
-import 'package:san_pya/screens/merchant_order_list.dart';
+import 'package:san_pya/screens/merchant_main_screen.dart';
+import 'package:san_pya/screens/merchant_order_detail_screen.dart';
+import 'package:san_pya/screens/merchant_order_list_screen.dart';
 import 'package:san_pya/screens/notification_setting_screen.dart';
 import 'package:san_pya/screens/order_detail_screen.dart';
 import 'package:san_pya/screens/order_history_screen.dart';
@@ -82,15 +83,18 @@ class AppRouter {
       case SanPyaRoutes.shoppingCart:
         return MaterialPageRoute(builder: (context) => ShoppingCartScreen());
 
-      case SanPyaRoutes.marchentOrderList:
+      case SanPyaRoutes.merchantMain:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                value: _orderBloc, child: MerchantOrderList()));
+            builder: (context) => MultiBlocProvider(providers: [
+                  BlocProvider.value(value: _orderBloc),
+                  BlocProvider.value(value: _productBloc),
+                ], child: MerchantMainScreen()));
       case SanPyaRoutes.marchentOrderDetail:
         final OrderDetailScreenArgs args = settings.arguments;
         return MaterialPageRoute(
             builder: (context) => BlocProvider.value(
-                value: _orderBloc, child: MerchantOrderDetail(id: args.id)));
+                value: _orderBloc,
+                child: MerchantOrderDetailScreen(id: args.id)));
       default:
         return null;
     }

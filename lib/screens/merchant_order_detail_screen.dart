@@ -7,16 +7,18 @@ import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/block_button.dart';
 import 'package:san_pya/widgets/order_detail_list_item.dart';
 
-class MerchantOrderDetail extends StatefulWidget {
+class MerchantOrderDetailScreen extends StatefulWidget {
   final int id;
 
-  const MerchantOrderDetail({Key key, @required this.id}) : super(key: key);
+  const MerchantOrderDetailScreen({Key key, @required this.id})
+      : super(key: key);
 
   @override
-  _MerchantOrderDetailState createState() => _MerchantOrderDetailState();
+  _MerchantOrderDetailScreenState createState() =>
+      _MerchantOrderDetailScreenState();
 }
 
-class _MerchantOrderDetailState extends State<MerchantOrderDetail> {
+class _MerchantOrderDetailScreenState extends State<MerchantOrderDetailScreen> {
   OrderBloc _orderBloc;
 
   @override

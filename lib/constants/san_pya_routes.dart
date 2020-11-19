@@ -12,6 +12,7 @@ class SanPyaRoutes {
   static const shoppingCart = '/shopping_cart';
   static const orderHistory = '/order_history';
   static const orderDetail = '/order_detail';
-  static const marchentOrderList = '/marchent/order_list';
+
+  static const merchantMain = '/merchant/main';
   static const marchentOrderDetail = '/marchent/order_detail';
 }
