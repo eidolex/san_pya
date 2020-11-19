@@ -25,7 +25,7 @@ class BlockButton extends StatelessWidget {
       color: color,
       textColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-      padding: EdgeInsets.only(top: Spacing.s4, bottom: Spacing.s4),
+      padding: EdgeInsets.symmetric(vertical: Spacing.s4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

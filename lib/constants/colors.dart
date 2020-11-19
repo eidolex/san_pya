@@ -8,6 +8,8 @@ class MainColors {
   static Color accent = Color(0xFFF0BC30);
 
   static Color primaryDarker = Color(0xFF840A0E);
+
+  static Color green = Color(0xFF18A841);
 }
 
 // Body Text colors

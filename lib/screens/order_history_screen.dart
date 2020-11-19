@@ -5,10 +5,11 @@ import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/san_pya_routes.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/order.dart';
-import 'package:san_pya/screens/order_detail_screen.dart';
 import 'package:san_pya/utils/format_date.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 import 'package:san_pya/widgets/bottom_loader.dart';
+
+import '../router.dart';
 
 class OrderHistoryScreen extends StatefulWidget {
   @override
