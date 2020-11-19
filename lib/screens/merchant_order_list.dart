@@ -30,7 +30,7 @@ class _MerchantOrderListState extends State<MerchantOrderList> {
     var primaryColor = Theme.of(context).primaryColor;
     var accentColor = Theme.of(context).accentColor;
     return Scaffold(
-        appBar: appBar(context, "Order List"),
+        appBar: merchantAppBar(context, "Order List"),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

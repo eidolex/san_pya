@@ -28,7 +28,7 @@ class ShoppingCartScreen extends StatelessWidget {
     var headline1 = textTheme.headline1;
     var subTitle1 = textTheme.subtitle1;
     return Scaffold(
-      appBar: appBar(context, "Shopping Cart"),
+      appBar: appBar(context, "Shopping Cart", showCart: false),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           var total = state is CartLoaded ? state.cart.totalPrice : 0;

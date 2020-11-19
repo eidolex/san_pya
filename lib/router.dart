@@ -44,7 +44,15 @@ class AppRouter {
       case SanPyaRoutes.login:
         return MaterialPageRoute(builder: (context) => LoginScreen());
       case SanPyaRoutes.profile:
-        return MaterialPageRoute(builder: (context) => ProfileScreen());
+        bool isMerchant = false;
+        if (settings.arguments != null) {
+          final ProfileScreenArgs args = settings.arguments;
+          isMerchant = args.isMerchant;
+        }
+        return MaterialPageRoute(
+            builder: (context) => ProfileScreen(
+                  isMerchant: isMerchant,
+                ));
       case SanPyaRoutes.passwordSetting:
         return MaterialPageRoute(builder: (context) => PasswordSettingScreen());
       case SanPyaRoutes.languageSetting:
@@ -98,4 +106,10 @@ class OrderDetailScreenArgs {
   final int id;
 
   OrderDetailScreenArgs(this.id);
+}
+
+class ProfileScreenArgs {
+  final bool isMerchant;
+
+  ProfileScreenArgs(this.isMerchant);
 }

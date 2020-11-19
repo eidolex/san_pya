@@ -31,7 +31,7 @@ class _MerchantOrderDetailState extends State<MerchantOrderDetail> {
   Widget build(BuildContext context) {
     var primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
-      appBar: appBar(context, "Order List"),
+      appBar: merchantAppBar(context, "Order List"),
       body: BlocConsumer<OrderBloc, OrderState>(listener: (context, state) {
         if (state.detailFetchStatus == OrderStatus.failure) {
           Navigator.pop(context);

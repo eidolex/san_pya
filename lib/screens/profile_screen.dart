@@ -7,11 +7,15 @@ import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
+  final bool isMerchant;
+
   static const _leadingTextStyle =
       TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
 
   static const _trailingTextStyle = TextStyle(
       color: Color(0xFF9E9E9E), fontSize: 12, fontWeight: FontWeight.w500);
+
+  const ProfileScreen({Key key, this.isMerchant = false}) : super(key: key);
 
   _nameChangeHandler() {}
 
@@ -21,7 +25,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
-      appBar: appBar(context, "Profile"),
+      appBar: isMerchant
+          ? merchantAppBar(context, "Profile", showProfile: false)
+          : appBar(context, "Profile"),
       body: ListView(
         children: [
           _buildProfileCover(primaryColor),
