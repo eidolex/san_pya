@@ -7,7 +7,6 @@ import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/models/order.dart';
 import 'package:san_pya/utils/format_date.dart';
 import 'package:san_pya/widgets/app_bar.dart';
-import 'package:san_pya/widgets/bottom_loader.dart';
 
 import '../router.dart';
 

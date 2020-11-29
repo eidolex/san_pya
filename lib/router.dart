@@ -7,7 +7,6 @@ import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
 import 'package:san_pya/screens/merchant_main_screen.dart';
 import 'package:san_pya/screens/merchant_order_detail_screen.dart';
-import 'package:san_pya/screens/merchant_order_list_screen.dart';
 import 'package:san_pya/screens/notification_setting_screen.dart';
 import 'package:san_pya/screens/order_detail_screen.dart';
 import 'package:san_pya/screens/order_history_screen.dart';
