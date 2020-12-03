@@ -5,7 +5,6 @@ import 'package:san_pya/constants/san_pya_icons.dart';
 import 'package:san_pya/screens/merchant_order_list_screen.dart';
 import 'package:san_pya/screens/merchant_product_list_screen.dart';
 import 'package:san_pya/screens/news_screen.dart';
-import 'package:san_pya/screens/product_list_screen.dart';
 import 'package:san_pya/widgets/app_bar.dart';
 
 class MerchantMainScreen extends StatefulWidget {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:san_pya/bloc/order_bloc.dart';
-import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/spacings.dart';
-import 'package:san_pya/models/cart_item.dart';
 import 'package:san_pya/utils/format_date.dart';
 import 'package:san_pya/widgets/alert_message.dart';
 import 'package:san_pya/widgets/app_bar.dart';

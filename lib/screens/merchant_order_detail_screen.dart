@@ -4,7 +4,6 @@ import 'package:san_pya/bloc/order_bloc.dart';
 import 'package:san_pya/constants/colors.dart';
 import 'package:san_pya/constants/spacings.dart';
 import 'package:san_pya/widgets/app_bar.dart';
-import 'package:san_pya/widgets/block_button.dart';
 import 'package:san_pya/widgets/order_detail_list_item.dart';
 
 class MerchantOrderDetailScreen extends StatefulWidget {
