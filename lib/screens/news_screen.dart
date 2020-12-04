@@ -78,7 +78,27 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
                               color: TextColors.bodyText,
                               fontFamily: SanPyaFonts.poppins,
                               fontSize: 11,
-                              fontWeight: FontWeight.w300))
+                              fontWeight: FontWeight.w400)),
+                      SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "123 likes",
+                            style: TextStyle(
+                                color: TextColors.bodyText,
+                                fontFamily: SanPyaFonts.poppins,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          Text("45 comments",
+                              style: TextStyle(
+                                  color: TextColors.bodyText,
+                                  fontFamily: SanPyaFonts.poppins,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w400))
+                        ],
+                      )
                     ],
                   ),
                 )
