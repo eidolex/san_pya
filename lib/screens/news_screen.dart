@@ -36,14 +36,14 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
         crossAxisCount: 2,
         height: 300,
-        crossAxisSpacing: 5.0,
-        mainAxisSpacing: 5.0,
+        crossAxisSpacing: Spacing.s3,
+        mainAxisSpacing: Spacing.s3,
       ),
       itemBuilder: (BuildContext context, int index) {
         return new GestureDetector(
           child: Card(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
+                borderRadius: BorderRadius.circular(8.0)),
             elevation: 1.0,
             clipBehavior: Clip.antiAlias,
             child: Column(
@@ -54,21 +54,19 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
                     child:
                         Image.asset('graphics/image1.png', fit: BoxFit.cover)),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(5.0, 2.0, 5.0, 4.0),
+                  padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text("23 March 2019",
                           style: TextStyle(
                               color: TextColors.bodyText,
-                              fontFamily: SanPyaFonts.poppins,
                               fontSize: 11,
                               fontWeight: FontWeight.w300)),
                       Text(
                         "PROMOTION OF ADIPISCING ELIT, SED DO EIUSMOD",
                         style: TextStyle(
                             color: TextColors.bodyText,
-                            fontFamily: SanPyaFonts.poppins,
                             fontSize: 13,
                             fontWeight: FontWeight.w600),
                       ),
@@ -76,7 +74,6 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
                           "Duis aute irure dolor in reprehenderit in volupate velite esse cillum dolore eu fugiat nulla",
                           style: TextStyle(
                               color: TextColors.bodyText,
-                              fontFamily: SanPyaFonts.poppins,
                               fontSize: 11,
                               fontWeight: FontWeight.w400)),
                       SizedBox(height: 5),
@@ -87,14 +84,12 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
                             "123 likes",
                             style: TextStyle(
                                 color: TextColors.bodyText,
-                                fontFamily: SanPyaFonts.poppins,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
                           Text("45 comments",
                               style: TextStyle(
                                   color: TextColors.bodyText,
-                                  fontFamily: SanPyaFonts.poppins,
                                   fontSize: 11,
                                   fontWeight: FontWeight.w400))
                         ],
