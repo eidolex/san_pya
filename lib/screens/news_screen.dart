@@ -30,10 +30,37 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
       tabs: _tabList,
     );
 
-    var allItemsGridView = GridView.builder(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Container(
+            padding: Edge.ex5,
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Expanded(child: new Container()),
+                  tabBarItem
+                ],
+              ),
+            ),
+          ),
+        ),
+        body: new TabBarView(children: [
+          buildAllItems(),
+          buildAllItems(),
+          buildAllItems(),
+        ]),
+      ),
+    );
+  }
+
+  GridView buildAllItems() {
+    return GridView.builder(
       padding: Edge.e4,
       itemCount: 6,
-      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
         crossAxisCount: 2,
         height: 300,
         crossAxisSpacing: Spacing.s3,
@@ -48,16 +75,13 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
             clipBehavior: Clip.antiAlias,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                AspectRatio(
-                    aspectRatio: 18.0 / 11.0,
-                    child:
-                        Image.asset('graphics/image1.png', fit: BoxFit.cover)),
+              children: [
+                buildPhoto(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: [
                       Text("23 March 2019",
                           style: TextStyle(
                               color: TextColors.bodyText,
@@ -103,30 +127,11 @@ class _NewsScreenState extends State<NewsScreen> with TickerProviderStateMixin {
         );
       },
     );
+  }
 
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: Container(
-            padding: Edge.ex5,
-            child: SafeArea(
-              child: Column(
-                children: <Widget>[
-                  Expanded(child: new Container()),
-                  tabBarItem
-                ],
-              ),
-            ),
-          ),
-        ),
-        body: new TabBarView(children: [
-          allItemsGridView,
-          allItemsGridView,
-          allItemsGridView,
-        ]),
-      ),
-    );
+  AspectRatio buildPhoto() {
+    return AspectRatio(
+        aspectRatio: 18.0 / 11.0,
+        child: Image.asset('graphics/image1.png', fit: BoxFit.cover));
   }
 }
