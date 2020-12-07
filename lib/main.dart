@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                   bodyText2: TextStyle(color: TextColors.bodyText)),
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            initialRoute: SanPyaRoutes.merchantMain,
+            initialRoute: SanPyaRoutes.newsDetail,
             onGenerateRoute: _router.onGenerateRoute));
   }
 

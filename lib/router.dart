@@ -7,6 +7,7 @@ import 'package:san_pya/screens/login_screen.dart';
 import 'package:san_pya/screens/main_screen.dart';
 import 'package:san_pya/screens/merchant_main_screen.dart';
 import 'package:san_pya/screens/merchant_order_detail_screen.dart';
+import 'package:san_pya/screens/news_detail_screen.dart';
 import 'package:san_pya/screens/notification_setting_screen.dart';
 import 'package:san_pya/screens/order_detail_screen.dart';
 import 'package:san_pya/screens/order_history_screen.dart';
@@ -73,6 +74,8 @@ class AppRouter {
                   value: _orderBloc,
                   child: OrderDetailScreen(id: args.id),
                 ));
+      case SanPyaRoutes.newsDetail:
+        return MaterialPageRoute(builder: (context) => NewsDetailsScreen());
       case SanPyaRoutes.productDetail:
         return MaterialPageRoute(
             builder: (context) => BlocProvider.value(
